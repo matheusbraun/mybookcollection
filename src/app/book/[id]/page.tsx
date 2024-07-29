@@ -24,7 +24,7 @@ export default async function Edit({ params }: { params: { id: string } }) {
         <div className="mt-4 rounded-[0.5rem] border bg-background shadow">
           <div className="container h-full w-full flex-col space-y-8 p-8">
             <h2 className="text-2xl font-bold">Edit book</h2>
-            <BookForm session={session} isEdit={true} bookId={params.id} book={{
+            <BookForm isEdit={true} bookId={params.id} book={{
               name: data.name,
               category: data.category,
               numberOfVolumes: data.numberOfVolumes,

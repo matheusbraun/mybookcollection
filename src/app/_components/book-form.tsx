@@ -21,7 +21,6 @@ import {
   FormMessage,
 } from './ui/form';
 import { Button } from './ui/button';
-import { Session } from 'next-auth';
 import { api } from '@/trpc/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -42,13 +41,12 @@ const formSchema = z.object({
 export type Book = z.infer<typeof formSchema>;
 
 type BookFormProps = {
-  session: Session | null;
   book?: Book;
   isEdit?: boolean;
   bookId?: string;
 };
 
-export function BookForm({ session, book, isEdit, bookId }: BookFormProps) {
+export function BookForm({ book, isEdit, bookId }: BookFormProps) {
   const router = useRouter();
 
   const form = useForm<Book>({

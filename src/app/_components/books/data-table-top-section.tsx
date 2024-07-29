@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '../ui/button';
-import { Session } from 'next-auth';
+import { type Session } from 'next-auth';
 import { Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -17,7 +17,7 @@ export function DataTableTopSection({
   isShared?: boolean;
   user?: { name: string | null };
 }) {
-  function onShareClick() {
+  async function onShareClick() {
     if (typeof window === 'undefined') {
       toast.error('Clipboard not working', {
         description: "Didn't copy the url. Please try again.",
@@ -28,7 +28,7 @@ export function DataTableTopSection({
 
     const url = `${window.location.origin}/share/${session?.user?.id}`;
 
-    navigator.clipboard.writeText(url);
+    await navigator.clipboard.writeText(url);
 
     toast.success('Share url successfully copied', {
       description: `${url} successfully copied to your clipboard.`,
@@ -36,7 +36,7 @@ export function DataTableTopSection({
     });
   }
 
-  var name = session ? session.user?.name : user?.name;
+  const name = session ? session.user?.name : user?.name;
 
   return (
     <div className="flex items-center justify-between space-y-2">

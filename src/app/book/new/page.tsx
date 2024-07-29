@@ -18,7 +18,7 @@ export default async function New() {
         <div className="mt-4 rounded-[0.5rem] border bg-background shadow">
           <div className="container h-full w-full flex-col space-y-8 p-8">
             <h2 className="text-2xl font-bold">Add a new book</h2>
-            <BookForm session={session} />
+            <BookForm />
           </div>
         </div>
       </main>

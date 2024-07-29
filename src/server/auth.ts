@@ -52,15 +52,14 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
-  /* @ts-ignore */
   adapter: DrizzleAdapter(db, {
-     /* @ts-ignore */
+     /* @ts-expect-error  idk the error*/
     usersTable: users,
-     /* @ts-ignore */
+     /* @ts-expect-error  idk the error*/
     accountsTable: accounts,
-     /* @ts-ignore */
+     /* @ts-expect-error  idk the error*/
     sessionsTable: sessions,
-     /* @ts-ignore */
+     /* @ts-expect-error  idk the error*/
     verificationTokensTable: verificationTokens,
   }) as Adapter,
   providers: [

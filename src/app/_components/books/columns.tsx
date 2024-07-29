@@ -1,36 +1,36 @@
-"use client";
+'use client';
 
-import { ColumnDef } from "@tanstack/react-table";
-import { DataTableColumnHeader } from "./data-table-column-header";
-import { Button } from "../ui/button";
-import { PencilIcon } from "lucide-react";
-import { categories } from "@/data/data";
-import Link from "next/link";
+import { type ColumnDef } from '@tanstack/react-table';
+import { DataTableColumnHeader } from './data-table-column-header';
+import { Button } from '../ui/button';
+import { PencilIcon } from 'lucide-react';
+import { categories } from '@/data/data';
+import Link from 'next/link';
 
 export type Book = {
   id: number;
   name: string;
   numberOfVolumes: number;
-  category: "book" | "manga" | "manhwa" | "comic";
+  category: 'book' | 'manga' | 'manhwa' | 'comic';
   isCompleted: boolean;
 };
 
 export const columns: ColumnDef<Book>[] = [
   {
-    accessorKey: "name",
+    accessorKey: 'name',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
     ),
     enableHiding: false,
   },
   {
-    accessorKey: "category",
+    accessorKey: 'category',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Category" />
     ),
     cell: ({ row }) => {
       const category = categories.find(
-        (category) => category.value === row.getValue("category"),
+        category => category.value === row.getValue('category'),
       );
 
       if (!category) {
@@ -40,17 +40,18 @@ export const columns: ColumnDef<Book>[] = [
       return <span>{category.label}</span>;
     },
     filterFn: (row, id, value) => {
+      // eslint-disable-next-line
       return value.includes(row.getValue(id));
     },
   },
   {
-    accessorKey: "numberOfVolumes",
+    accessorKey: 'numberOfVolumes',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Volumes" />
     ),
   },
   {
-    accessorKey: "isCompleted",
+    accessorKey: 'isCompleted',
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
@@ -68,7 +69,7 @@ export const columns: ColumnDef<Book>[] = [
     },
   },
   {
-    id: "actions",
+    id: 'actions',
     cell: ({ row }) => (
       <div className="flex justify-start space-x-2">
         <Button
@@ -87,4 +88,7 @@ export const columns: ColumnDef<Book>[] = [
   },
 ];
 
-export const columnsShared: ColumnDef<Book>[] = columns.slice(0, columns.length - 1);
+export const columnsShared: ColumnDef<Book>[] = columns.slice(
+  0,
+  columns.length - 1,
+);
