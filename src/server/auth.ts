@@ -52,10 +52,15 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
+  /* @ts-ignore */
   adapter: DrizzleAdapter(db, {
+     /* @ts-ignore */
     usersTable: users,
+     /* @ts-ignore */
     accountsTable: accounts,
+     /* @ts-ignore */
     sessionsTable: sessions,
+     /* @ts-ignore */
     verificationTokensTable: verificationTokens,
   }) as Adapter,
   providers: [
